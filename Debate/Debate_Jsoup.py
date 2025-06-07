@@ -33,7 +33,7 @@ if __name__ == "__main__":
             
             cd responses
             
-            cat << 'EOF_RESPONSE' > response1
+            cat << 'EOF_RESPONSE' > response
             response1_model1: 
             {response1}
             --------------------
@@ -65,9 +65,9 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Jsoup_buggy/Jsoup_{i}_buggy
 
-            defects4j compile >> /home/lanweifrj/Test_Total/Jsoup_buggy/results/result_{i}.txt
+            defects4j compile > /home/lanweifrj/Test_Total/Jsoup_buggy/results/debate/result_{i}.txt
 
-            defects4j test >> /home/lanweifrj/Test_Total/Jsoup_buggy/results/result_{i}.txt
+            defects4j test >> /home/lanweifrj/Test_Total/Jsoup_buggy/results/debate/result_{i}.txt
             """
 
             script_path = f"/home/lanweifrj/Test_Total/Jsoup_buggy/scripts/configure_script_{i}.sh"
@@ -102,9 +102,9 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Jsoup_fixed/Jsoup_{i}_fixed
 
-            defects4j compile >> /home/lanweifrj/Test_Total/Jsoup_fixed/results/result_{i}.txt
+            defects4j compile > /home/lanweifrj/Test_Total/Jsoup_fixed/results/debate/result_{i}.txt
 
-            defects4j test >> /home/lanweifrj/Test_Total/Jsoup_fixed/results/result_{i}.txt
+            defects4j test >> /home/lanweifrj/Test_Total/Jsoup_fixed/results/debate/result_{i}.txt
             """
 
             script_path = f"/home/lanweifrj/Test_Total/Jsoup_fixed/scripts/configure_script_{i}.sh"

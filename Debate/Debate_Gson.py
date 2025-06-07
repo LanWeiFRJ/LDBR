@@ -33,12 +33,24 @@ if __name__ == "__main__":
             
             cd responses
             
-            cat << 'EOF_RESPONSE' > response1
+            cat << 'EOF_RESPONSE' > response
+            response1_model1: 
             {response1}
             --------------------
+            response1_model2:
+            {_response1}
+            --------------------
+            response2_model1:
             {response2}
             --------------------
+            response2_model2:
+            {_response2}
+            --------------------
+            response3_model1:
             {response3}
+            --------------------
+            response3_model2:
+            {_response3}
 
             cd /home/lanweifrj/Test_Total/Gson_buggy/Gson_{i}_buggy/gson/src/test/java/com/google/gson*
 
@@ -53,9 +65,9 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Gson_buggy/Gson_{i}_buggy
 
-            defects4j compile >> /home/lanweifrj/Test_Total/Gson_buggy/results/result_{i}.txt
+            defects4j compile > /home/lanweifrj/Test_Total/Gson_buggy/results/debate/result_{i}.txt
 
-            defects4j test >> /home/lanweifrj/Test_Total/Gson_buggy/results/result_{i}.txt
+            defects4j test >> /home/lanweifrj/Test_Total/Gson_buggy/results/debate/result_{i}.txt
             """
 
             script_path = f"/home/lanweifrj/Test_Total/Gson_buggy/scripts/configure_script_{i}.sh"
@@ -90,9 +102,9 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Gson_fixed/Gson_{i}_fixed
 
-            defects4j compile >> /home/lanweifrj/Test_Total/Gson_fixed/results/result_{i}.txt
+            defects4j compile > /home/lanweifrj/Test_Total/Gson_fixed/results/debate/result_{i}.txt
 
-            defects4j test >> /home/lanweifrj/Test_Total/Gson_fixed/results/result_{i}.txt
+            defects4j test >> /home/lanweifrj/Test_Total/Gson_fixed/results/debate/result_{i}.txt
             """
 
             script_path = f"/home/lanweifrj/Test_Total/Gson_fixed/scripts/configure_script_{i}.sh"

@@ -24,7 +24,7 @@ if __name__ == "__main__":
             # 用正则表达式匹配“public class ***”
             class_name = du.re.search(r"(?<=\bpublic\sclass\s)[A-Z][a-zA-Z0-9_]*", _code3, du.re.DOTALL).group(0)
 
-            if i < 36:
+            if i < 85:
                 configure_script = f"""
                     defects4j checkout -p Math -v {i}b -w /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
                     
@@ -34,7 +34,7 @@ if __name__ == "__main__":
                 
                     cd responses
                     
-                    cat << 'EOF_RESPONSE' > response1
+                    cat << 'EOF_RESPONSE' > response
                     response1_model1: 
                     {response1}
                     --------------------
@@ -53,7 +53,7 @@ if __name__ == "__main__":
                     response3_model2:
                     {_response3}
 
-                    cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/java/org/apache/commons/math3
+                    cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/java/org/apache/commons/math*
 
                     mkdir bugs
 
@@ -66,55 +66,9 @@ if __name__ == "__main__":
 
                     cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
 
-                    defects4j compile >> /home/lanweifrj/Test_Total/Math_buggy/results/result_{i}.txt
+                    defects4j compile > /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
 
-                    defects4j test >> /home/lanweifrj/Test_Total/Math_buggy/results/result_{i}.txt
-                    """
-            elif i < 85:
-                configure_script = f"""
-                    defects4j checkout -p Math -v {i}b -w /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
-                    
-                    cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
-            
-                    mkdir responses
-                
-                    cd responses
-                    
-                    cat << 'EOF_RESPONSE' > response1
-                    response1_model1: 
-                    {response1}
-                    --------------------
-                    response1_model2:
-                    {_response1}
-                    --------------------
-                    response2_model1:
-                    {response2}
-                    --------------------
-                    response2_model2:
-                    {_response2}
-                    --------------------
-                    response3_model1:
-                    {response3}
-                    --------------------
-                    response3_model2:
-                    {_response3}
-
-                    cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/java/org/apache/commons/math
-
-                    mkdir bugs
-
-                    cd bugs
-
-                    touch {class_name}.java
-
-                    cat << 'EOF_JAVA_CODE' > {class_name}.java
-                    {_code3}
-
-                    cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
-
-                    defects4j compile >> /home/lanweifrj/Test_Total/Math_buggy/results/result_{i}.txt
-
-                    defects4j test >> /home/lanweifrj/Test_Total/Math_buggy/results/result_{i}.txt
+                    defects4j test >> /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
                     """
             else:
                 configure_script = f"""
@@ -126,7 +80,7 @@ if __name__ == "__main__":
                 
                     cd responses
                     
-                    cat << 'EOF_RESPONSE' > response1
+                    cat << 'EOF_RESPONSE' > response
                     response1_model1: 
                     {response1}
                     --------------------
@@ -158,9 +112,9 @@ if __name__ == "__main__":
 
                     cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
 
-                    defects4j compile >> /home/lanweifrj/Test_Total/Math_buggy/results/result_{i}.txt
+                    defects4j compile > /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
 
-                    defects4j test >> /home/lanweifrj/Test_Total/Math_buggy/results/result_{i}.txt
+                    defects4j test >> /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
                     """
 
             script_path = f"/home/lanweifrj/Test_Total/Math_buggy/scripts/configure_script_{i}.sh"
@@ -179,11 +133,11 @@ if __name__ == "__main__":
 
             # Fixed Version
 
-            if i < 36:
+            if i < 85:
                 configure_script = f"""
                     defects4j checkout -p Math -v {i}f -w /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
 
-                    cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/java/org/apache/commons/math3
+                    cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/java/org/apache/commons/math*
 
                     mkdir bugs
 
@@ -196,30 +150,9 @@ if __name__ == "__main__":
 
                     cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
 
-                    defects4j compile >> /home/lanweifrj/Test_Total/Math_fixed/results/result_{i}.txt
+                    defects4j compile > /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
 
-                    defects4j test >> /home/lanweifrj/Test_Total/Math_fixed/results/result_{i}.txt
-                    """
-            elif i < 85:
-                configure_script = f"""
-                    defects4j checkout -p Math -v {i}f -w /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
-
-                    cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/java/org/apache/commons/math
-
-                    mkdir bugs
-
-                    cd bugs
-
-                    touch {class_name}.java
-
-                    cat << 'EOF_JAVA_CODE' > {class_name}.java
-                    {_code3}
-
-                    cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
-
-                    defects4j compile >> /home/lanweifrj/Test_Total/Math_fixed/results/result_{i}.txt
-
-                    defects4j test >> /home/lanweifrj/Test_Total/Math_fixed/results/result_{i}.txt
+                    defects4j test >> /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
                     """
             else:
                 configure_script = f"""
@@ -238,9 +171,9 @@ if __name__ == "__main__":
 
                     cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
 
-                    defects4j compile >> /home/lanweifrj/Test_Total/Math_fixed/results/result_{i}.txt
+                    defects4j compile > /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
 
-                    defects4j test >> /home/lanweifrj/Test_Total/Math_fixed/results/result_{i}.txt
+                    defects4j test >> /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
                     """
 
             script_path = f"/home/lanweifrj/Test_Total/Math_fixed/scripts/configure_script_{i}.sh"
