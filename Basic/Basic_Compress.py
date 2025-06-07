@@ -36,9 +36,9 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Compress_buggy/Compress_{i}_buggy
 
-            defects4j compile >> /home/lanweifrj/Test_Total/Compress_buggy/results/result_{i}.txt
+            defects4j compile > /home/lanweifrj/Test_Total/Compress_buggy/results/basic/result_{i}.txt
 
-            defects4j test >> /home/lanweifrj/Test_Total/Compress_buggy/results/result_{i}.txt
+            defects4j test >> /home/lanweifrj/Test_Total/Compress_buggy/results/basic/result_{i}.txt
             """
 
             script_path = f"/home/lanweifrj/Test_Total/Compress_buggy/scripts/configure_script_{i}.sh"
@@ -57,7 +57,7 @@ if __name__ == "__main__":
 
             # Fixed Version
             configure_script = f"""
-            defects4j checkout -p Compress -v {i}f -w /home/lanweifrj/Test_Total/Compress_buggy/Compress_{i}_buggy
+            defects4j checkout -p Compress -v {i}f -w /home/lanweifrj/Test_Total/Compress_fixed/Compress_{i}_buggy
 
             cd /home/lanweifrj/Test_Total/Compress_fixed/Compress_{i}_fixed/src/test/java/org/apache/commons/compress*
 
@@ -72,9 +72,9 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Compress_fixed/Compress_{i}_fixed
 
-            defects4j compile >> /home/lanweifrj/Test_Total/Compress_fixed/results/result_{i}.txt
+            defects4j compile > /home/lanweifrj/Test_Total/Compress_fixed/results/basic/result_{i}.txt
 
-            defects4j test >> /home/lanweifrj/Test_Total/Compress_fixed/results/result_{i}.txt
+            defects4j test >> /home/lanweifrj/Test_Total/Compress_fixed/results/basic/result_{i}.txt
             """
 
             script_path = f"/home/lanweifrj/Test_Total/Compress_fixed/scripts/configure_script_{i}.sh"

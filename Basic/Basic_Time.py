@@ -36,9 +36,9 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Time_buggy/Time_{i}_buggy
 
-            defects4j compile >> /home/lanweifrj/Test_Total/Time_buggy/results/result_{i}.txt
+            defects4j compile > /home/lanweifrj/Test_Total/Time_buggy/results/basic/result_{i}.txt
 
-            defects4j test >> /home/lanweifrj/Test_Total/Time_buggy/results/result_{i}.txt
+            defects4j test >> /home/lanweifrj/Test_Total/Time_buggy/results/basic/result_{i}.txt
             """
 
             script_path = f"/home/lanweifrj/Test_Total/Time_buggy/scripts/configure_script_{i}.sh"
@@ -73,9 +73,9 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Time_fixed/Time_{i}_fixed
 
-            defects4j compile >> /home/lanweifrj/Test_Total/Time_fixed/results/result_{i}.txt
+            defects4j compile > /home/lanweifrj/Test_Total/Time_fixed/results/basic/result_{i}.txt
 
-            defects4j test >> /home/lanweifrj/Test_Total/Time_fixed/results/result_{i}.txt
+            defects4j test >> /home/lanweifrj/Test_Total/Time_fixed/results/basic/result_{i}.txt
             """
 
             script_path = f"/home/lanweifrj/Test_Total/Time_fixed/scripts/configure_script_{i}.sh"

@@ -20,6 +20,8 @@ if __name__ == "__main__":
             # 用正则表达式匹配“public class ***”
             class_name = bu.re.search(r"(?<=\bpublic\sclass\s)[A-Z][a-zA-Z0-9_]*", code, bu.re.DOTALL).group(0)
 
+            # Buggy Version
+
             if i < 17 :
                 configure_script = f"""
                 defects4j checkout -p Collections -v {i}b -w /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy
@@ -37,9 +39,9 @@ if __name__ == "__main__":
     
                 cd /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy
     
-                defects4j compile >> /home/lanweifrj/Test_Total/Collections_buggy/results/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Collections_buggy/results/basic/result_{i}.txt
     
-                defects4j test >> /home/lanweifrj/Test_Total/Collections_buggy/results/result_{i}.txt
+                defects4j test >> /home/lanweifrj/Test_Total/Collections_buggy/results/basic/result_{i}.txt
                 """
             else :
                 configure_script = f"""
@@ -58,9 +60,9 @@ if __name__ == "__main__":
 
                 cd /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy
 
-                defects4j compile >> /home/lanweifrj/Test_Total/Collections_buggy/results/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Collections_buggy/results/basic/result_{i}.txt
 
-                defects4j test >> /home/lanweifrj/Test_Total/Collections_buggy/results/result_{i}.txt
+                defects4j test >> /home/lanweifrj/Test_Total/Collections_buggy/results/basic/result_{i}.txt
                 """
 
             script_path = f"/home/lanweifrj/Test_Total/Collections_buggy/scripts/configure_script_{i}.sh"
@@ -95,9 +97,9 @@ if __name__ == "__main__":
 
                 cd /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed
 
-                defects4j compile >> /home/lanweifrj/Test_Total/Collections_fixed/results/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Collections_fixed/results/basic/result_{i}.txt
 
-                defects4j test >> /home/lanweifrj/Test_Total/Collections_fixed/results/result_{i}.txt
+                defects4j test >> /home/lanweifrj/Test_Total/Collections_fixed/results/basic/result_{i}.txt
                 """
             else:
                 configure_script = f"""
@@ -116,9 +118,9 @@ if __name__ == "__main__":
 
                 cd /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed
 
-                defects4j compile >> /home/lanweifrj/Test_Total/Collections_fixed/results/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Collections_fixed/results/basic/result_{i}.txt
 
-                defects4j test >> /home/lanweifrj/Test_Total/Collections_fixed/results/result_{i}.txt
+                defects4j test >> /home/lanweifrj/Test_Total/Collections_fixed/results/basic/result_{i}.txt
                 """
 
             script_path = f"/home/lanweifrj/Test_Total/Collections_fixed/scripts/configure_script_{i}.sh"

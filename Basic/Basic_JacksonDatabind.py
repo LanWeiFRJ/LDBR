@@ -36,9 +36,9 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/JacksonDatabind_buggy/JacksonDatabind_{i}_buggy
 
-            defects4j compile >> /home/lanweifrj/Test_Total/JacksonDatabind_buggy/results/result_{i}.txt
+            defects4j compile > /home/lanweifrj/Test_Total/JacksonDatabind_buggy/results/basic/result_{i}.txt
 
-            defects4j test >> /home/lanweifrj/Test_Total/JacksonDatabind_buggy/results/result_{i}.txt
+            defects4j test >> /home/lanweifrj/Test_Total/JacksonDatabind_buggy/results/basic/result_{i}.txt
             """
 
             script_path = f"/home/lanweifrj/Test_Total/JacksonDatabind_buggy/scripts/configure_script_{i}.sh"
@@ -72,9 +72,9 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/JacksonDatabind_fixed/JacksonDatabind_{i}_fixed
 
-            defects4j compile >> /home/lanweifrj/Test_Total/JacksonDatabind_fixed/results/result_{i}.txt
+            defects4j compile > /home/lanweifrj/Test_Total/JacksonDatabind_fixed/results/basic/result_{i}.txt
 
-            defects4j test >> /home/lanweifrj/Test_Total/JacksonDatabind_fixed/results/result_{i}.txt
+            defects4j test >> /home/lanweifrj/Test_Total/JacksonDatabind_fixed/results/basic/result_{i}.txt
             """
 
             script_path = f"/home/lanweifrj/Test_Total/JacksonDatabind_fixed/scripts/configure_script_{i}.sh"

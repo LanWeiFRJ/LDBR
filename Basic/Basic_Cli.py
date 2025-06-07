@@ -20,6 +20,8 @@ if __name__ == "__main__":
             # 用正则表达式匹配“public class ***”
             class_name = bu.re.search(r"(?<=\bpublic\sclass\s)[A-Z][a-zA-Z0-9_]*", code, bu.re.DOTALL).group(0)
 
+            # Buggy Version
+
             if i < 30 :
                 configure_script = f"""
                 defects4j checkout -p Cli -v {i}b -w /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy

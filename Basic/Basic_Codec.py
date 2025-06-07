@@ -37,7 +37,7 @@ if __name__ == "__main__":
     
                 cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
     
-                defects4j compile >> /home/lanweifrj/Test_Total/Codec_buggy/results/basic/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Codec_buggy/results/basic/result_{i}.txt
     
                 defects4j test >> /home/lanweifrj/Test_Total/Codec_buggy/results/basic/result_{i}.txt
                 """
@@ -58,7 +58,7 @@ if __name__ == "__main__":
 
                 cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
 
-                defects4j compile >> /home/lanweifrj/Test_Total/Codec_buggy/results/basic/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Codec_buggy/results/basic/result_{i}.txt
 
                 defects4j test >> /home/lanweifrj/Test_Total/Codec_buggy/results/basic/result_{i}.txt
                 """
@@ -95,7 +95,7 @@ if __name__ == "__main__":
 
                 cd /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed
 
-                defects4j compile >> /home/lanweifrj/Test_Total/Codec_fixed/results/basic/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Codec_fixed/results/basic/result_{i}.txt
 
                 defects4j test >> /home/lanweifrj/Test_Total/Codec_fixed/results/basic/result_{i}.txt
                 """
@@ -116,7 +116,7 @@ if __name__ == "__main__":
 
                 cd /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed
 
-                defects4j compile >> /home/lanweifrj/Test_Total/Codec_fixed/results/basic/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Codec_fixed/results/basic/result_{i}.txt
 
                 defects4j test >> /home/lanweifrj/Test_Total/Codec_fixed/results/basic/result_{i}.txt
                 """
