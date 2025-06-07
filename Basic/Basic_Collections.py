@@ -23,12 +23,6 @@ if __name__ == "__main__":
             if i < 17 :
                 configure_script = f"""
                 defects4j checkout -p Collections -v {i}b -w /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy
-    
-                cd /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy
-                
-                defects4j compile > /home/lanweifrj/Test_Total/Collections_buggy/originals/basic/original_{i}.txt
-                
-                defects4j test >> /home/lanweifrj/Test_Total/Collections_buggy/originals/basic/original_{i}.txt
                 
                 cd /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy/src/test/org/apache/commons/collections*
     
@@ -50,12 +44,6 @@ if __name__ == "__main__":
             else :
                 configure_script = f"""
                 defects4j checkout -p Collections -v {i}b -w /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy
-
-                cd /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy
-                
-                defects4j compile > /home/lanweifrj/Test_Total/Collections_buggy/originals/basic/original_{i}.txt
-                
-                defects4j test >> /home/lanweifrj/Test_Total/Collections_buggy/originals/basic/original_{i}.txt
                 
                 cd /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy/src/test/java/org/apache/commons/collections*
 
@@ -94,12 +82,6 @@ if __name__ == "__main__":
                 configure_script = f"""
                 defects4j checkout -p Collections -v {i}f -w /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed
 
-                cd /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed
-
-                defects4j compile > /home/lanweifrj/Test_Total/Collections_fixed/originals/basic/original_{i}.txt
-
-                defects4j test >> /home/lanweifrj/Test_Total/Collections_fixed/originals/basic/original_{i}.txt
-
                 cd /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed/src/test/org/apache/commons/collections*
 
                 mkdir bugs
@@ -120,12 +102,6 @@ if __name__ == "__main__":
             else:
                 configure_script = f"""
                 defects4j checkout -p Collections -v {i}f -w /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed
-
-                cd /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed
-
-                defects4j compile > /home/lanweifrj/Test_Total/Collections_fixed/originals/basic/original_{i}.txt
-
-                defects4j test >> /home/lanweifrj/Test_Total/Collections_fixed/originals/basic/original_{i}.txt
 
                 cd /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed/src/test/java/org/apache/commons/collections*
 

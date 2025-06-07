@@ -23,12 +23,6 @@ if __name__ == "__main__":
             if i < 30 :
                 configure_script = f"""
                 defects4j checkout -p Cli -v {i}b -w /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy
-                
-                cd /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy
-                
-                defects4j compile > /home/lanweifrj/Test_Total/Cli_buggy/originals/basic/original_{i}.txt
-                
-                defects4j test >> /home/lanweifrj/Test_Total/Cli_buggy/originals/basic/original_{i}.txt
     
                 cd /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy/src/test/org/apache/commons/cli*
     
@@ -50,12 +44,6 @@ if __name__ == "__main__":
             else :
                 configure_script = f"""
                 defects4j checkout -p Cli -v {i}b -w /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy
-                
-                cd /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy
-                
-                defects4j compile > /home/lanweifrj/Test_Total/Cli_buggy/originals/basic/original_{i}.txt
-                
-                defects4j test >> /home/lanweifrj/Test_Total/Cli_buggy/originals/basic/original_{i}.txt
 
                 cd /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy/src/test/java/org/apache/commons/cli*
 

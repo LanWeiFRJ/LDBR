@@ -20,32 +20,11 @@ if __name__ == "__main__":
             # 用正则表达式匹配“public class ***”
             class_name = bu.re.search(r"(?<=\bpublic\sclass\s)[A-Z][a-zA-Z0-9_]*", code, bu.re.DOTALL).group(0)
 
-            if i < 36:
-                configure_script = f"""
-                defects4j checkout -p Math -v {i}b -w /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
-    
-                cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/java/org/apache/commons/math3
-    
-                mkdir bugs
-    
-                cd bugs
-    
-                touch {class_name}.java
-    
-                cat << 'EOF_JAVA_CODE' > {class_name}.java
-                {code}
-    
-                cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
-    
-                defects4j compile >> /home/lanweifrj/Test_Total/Math_buggy/results/result_{i}.txt
-    
-                defects4j test >> /home/lanweifrj/Test_Total/Math_buggy/results/result_{i}.txt
-                """
-            elif i < 85:
+            if i < 85:
                 configure_script = f"""
                 defects4j checkout -p Math -v {i}b -w /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
 
-                cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/java/org/apache/commons/math
+                cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/java/org/apache/commons/math*
 
                 mkdir bugs
 
@@ -100,32 +79,11 @@ if __name__ == "__main__":
 
             # Fixed Version
 
-            if i < 36:
+            if i < 85:
                 configure_script = f"""
                 defects4j checkout -p Math -v {i}f -w /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
 
-                cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/java/org/apache/commons/math3
-
-                mkdir bugs
-
-                cd bugs
-
-                touch {class_name}.java
-
-                cat << 'EOF_JAVA_CODE' > {class_name}.java
-                {code}
-
-                cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
-
-                defects4j compile >> /home/lanweifrj/Test_Total/Math_fixed/results/result_{i}.txt
-
-                defects4j test >> /home/lanweifrj/Test_Total/Math_fixed/results/result_{i}.txt
-                """
-            elif i < 85:
-                configure_script = f"""
-                defects4j checkout -p Math -v {i}f -w /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
-
-                cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/java/org/apache/commons/math
+                cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/java/org/apache/commons/math*
 
                 mkdir bugs
 

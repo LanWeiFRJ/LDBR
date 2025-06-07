@@ -41,32 +41,11 @@ if __name__ == "__main__":
     
                 defects4j test >> /home/lanweifrj/Test_Total/Lang_buggy/results/result_{i}.txt
                 """
-            elif i < 40:
-                configure_script = f"""
-                defects4j checkout -p Lang -v {i}b -w /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy
-
-                cd /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy/src/test/org/apache/commons/lang3
-
-                mkdir bugs
-
-                cd bugs
-
-                touch {class_name}.java
-
-                cat << 'EOF_JAVA_CODE' > {class_name}.java
-                {code}
-
-                cd /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy
-
-                defects4j compile >> /home/lanweifrj/Test_Total/Lang_buggy/results/result_{i}.txt
-
-                defects4j test >> /home/lanweifrj/Test_Total/Lang_buggy/results/result_{i}.txt
-                """
             else :
                 configure_script = f"""
                 defects4j checkout -p Lang -v {i}b -w /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy
 
-                cd /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy/src/test/org/apache/commons/lang
+                cd /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy/src/test/org/apache/commons/lang*
 
                 mkdir bugs
 
@@ -121,32 +100,11 @@ if __name__ == "__main__":
 
                 defects4j test >> /home/lanweifrj/Test_Total/Lang_fixed/results/result_{i}.txt
                 """
-            elif i < 40:
-                configure_script = f"""
-                defects4j checkout -p Lang -v {i}f -w /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed
-
-                cd /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed/src/test/org/apache/commons/lang3
-
-                mkdir bugs
-
-                cd bugs
-
-                touch {class_name}.java
-
-                cat << 'EOF_JAVA_CODE' > {class_name}.java
-                {code}
-
-                cd /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed
-
-                defects4j compile >> /home/lanweifrj/Test_Total/Lang_fixed/results/result_{i}.txt
-
-                defects4j test >> /home/lanweifrj/Test_Total/Lang_fixed/results/result_{i}.txt
-                """
             else:
                 configure_script = f"""
                 defects4j checkout -p Lang -v {i}f -w /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed
 
-                cd /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed/src/test/org/apache/commons/lang
+                cd /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed/src/test/org/apache/commons/lang*
 
                 mkdir bugs
 

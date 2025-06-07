@@ -23,12 +23,6 @@ if __name__ == "__main__":
             if i < 11 :
                 configure_script = f"""
                 defects4j checkout -p Codec -v {i}b -w /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
-    
-                cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
-                
-                defects4j compile > /home/lanweifrj/Test_Total/Codec_buggy/originals/basic/original_{i}.txt
-                
-                defects4j test >> /home/lanweifrj/Test_Total/Codec_buggy/originals/basic/original_{i}.txt
                 
                 cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy/src/test/org/apache/commons/codec*
     
@@ -50,12 +44,6 @@ if __name__ == "__main__":
             else :
                 configure_script = f"""
                 defects4j checkout -p Codec -v {i}b -w /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
-
-                cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
-                
-                defects4j compile > /home/lanweifrj/Test_Total/Codec_buggy/originals/basic/original_{i}.txt
-                
-                defects4j test >> /home/lanweifrj/Test_Total/Codec_buggy/originals/basic/original_{i}.txt
                 
                 cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy/src/test/java/org/apache/commons/codec*
 
