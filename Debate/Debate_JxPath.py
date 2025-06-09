@@ -54,13 +54,12 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/JxPath_buggy/JxPath_{i}_buggy/src/test/org/apache/commons/jxpath*
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package org.apache.commons.$(basename "$CUR");
             {_code3}
 
             cd /home/lanweifrj/Test_Total/JxPath_buggy/JxPath_{i}_buggy
@@ -91,13 +90,12 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/JxPath_fixed/JxPath_{i}_fixed/src/test/org/apache/commons/jxpath*
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package org.apache.commons.$(basename "$CUR");
             {_code3}
 
             cd /home/lanweifrj/Test_Total/JxPath_fixed/JxPath_{i}_fixed

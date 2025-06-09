@@ -61,6 +61,7 @@ if __name__ == "__main__":
             touch {class_name}.java
 
             cat << 'EOF_JAVA_CODE' > {class_name}.java
+            package org.jsoup.bugs;
             {_code3}
 
             cd /home/lanweifrj/Test_Total/Jsoup_buggy/Jsoup_{i}_buggy
@@ -98,6 +99,7 @@ if __name__ == "__main__":
             touch {class_name}.java
 
             cat << 'EOF_JAVA_CODE' > {class_name}.java
+            package org.jsoup.bugs;
             {_code3}
 
             cd /home/lanweifrj/Test_Total/Jsoup_fixed/Jsoup_{i}_fixed

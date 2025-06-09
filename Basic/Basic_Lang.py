@@ -20,46 +20,25 @@ if __name__ == "__main__":
             # 用正则表达式匹配“public class ***”
             class_name = bu.re.search(r"(?<=\bpublic\sclass\s)[A-Z][a-zA-Z0-9_]*", code, bu.re.DOTALL).group(0)
 
-            if i < 36 :
-                configure_script = f"""
-                defects4j checkout -p Lang -v {i}b -w /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy
-    
-                cd /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy/src/test/java/org/apache/commons/lang3
-    
-                CUR="$PWD"
-    
-                touch {class_name}.java
-    
-                cat << EOF_JAVA_CODE > {class_name}.java
-                package org.apache.commons.$(basename "$CUR");
-                {code}
-    
-                cd /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy
-    
-                defects4j compile > /home/lanweifrj/Test_Total/Lang_buggy/results/basic/result_{i}.txt
-    
-                defects4j test >> /home/lanweifrj/Test_Total/Lang_buggy/results/basic/result_{i}.txt
-                """
-            else :
-                configure_script = f"""
-                defects4j checkout -p Lang -v {i}b -w /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy
+            configure_script = f"""
+            defects4j checkout -p Lang -v {i}b -w /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy
 
-                cd /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy/src/test/org/apache/commons/lang*
+            cd /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy/src/test/java/org/apache/commons/lang*
 
-                CUR="$PWD"
-    
-                touch {class_name}.java
-    
-                cat << EOF_JAVA_CODE > {class_name}.java
-                package org.apache.commons.$(basename "$CUR");
-                {code}
+            CUR="$PWD"
 
-                cd /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy
+            touch {class_name}.java
 
-                defects4j compile > /home/lanweifrj/Test_Total/Lang_buggy/results/basic/result_{i}.txt
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package org.apache.commons.$(basename "$CUR");
+            {code}
 
-                defects4j test >> /home/lanweifrj/Test_Total/Lang_buggy/results/basic/result_{i}.txt
-                """
+            cd /home/lanweifrj/Test_Total/Lang_buggy/Lang_{i}_buggy
+
+            defects4j compile > /home/lanweifrj/Test_Total/Lang_buggy/results/basic/result_{i}.txt
+
+            defects4j test >> /home/lanweifrj/Test_Total/Lang_buggy/results/basic/result_{i}.txt
+            """
 
 
             script_path = f"/home/lanweifrj/Test_Total/Lang_buggy/scripts/configure_script_{i}.sh"
@@ -77,46 +56,25 @@ if __name__ == "__main__":
             print("buggy done.")
 
             # Fixed Version
-            if i < 36:
-                configure_script = f"""
-                defects4j checkout -p Lang -v {i}f -w /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed
+            configure_script = f"""
+            defects4j checkout -p Lang -v {i}f -w /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed
 
-                cd /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed/src/test/java/org/apache/commons/lang3
+            cd /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed/src/test/java/org/apache/commons/lang3
 
-                CUR="$PWD"
-    
-                touch {class_name}.java
-    
-                cat << EOF_JAVA_CODE > {class_name}.java
-                package org.apache.commons.$(basename "$CUR");
-                {code}
+            CUR="$PWD"
 
-                cd /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed
+            touch {class_name}.java
 
-                defects4j compile > /home/lanweifrj/Test_Total/Lang_fixed/results/basic/result_{i}.txt
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package org.apache.commons.$(basename "$CUR");
+            {code}
 
-                defects4j test >> /home/lanweifrj/Test_Total/Lang_fixed/results/basic/result_{i}.txt
-                """
-            else:
-                configure_script = f"""
-                defects4j checkout -p Lang -v {i}f -w /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed
+            cd /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed
 
-                cd /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed/src/test/org/apache/commons/lang*
+            defects4j compile > /home/lanweifrj/Test_Total/Lang_fixed/results/basic/result_{i}.txt
 
-                CUR="$PWD"
-    
-                touch {class_name}.java
-    
-                cat << EOF_JAVA_CODE > {class_name}.java
-                package org.apache.commons.$(basename "$CUR");
-                {code}
-
-                cd /home/lanweifrj/Test_Total/Lang_fixed/Lang_{i}_fixed
-
-                defects4j compile > /home/lanweifrj/Test_Total/Lang_fixed/results/basic/result_{i}.txt
-
-                defects4j test >> /home/lanweifrj/Test_Total/Lang_fixed/results/basic/result_{i}.txt
-                """
+            defects4j test >> /home/lanweifrj/Test_Total/Lang_fixed/results/basic/result_{i}.txt
+            """
 
             script_path = f"/home/lanweifrj/Test_Total/Lang_fixed/scripts/configure_script_{i}.sh"
             with open(script_path, "w") as f:

@@ -54,13 +54,12 @@ if __name__ == "__main__":
             
             cd /home/lanweifrj/Test_Total/Csv_buggy/Csv_{i}_buggy/src/test/java/org/apache/commons/csv*
             
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package org.apache.commons.$(basename "$CUR");
             {_code3}
 
             cd /home/lanweifrj/Test_Total/Csv_buggy/Csv_{i}_buggy
@@ -91,13 +90,12 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Csv_fixed/Csv_{i}_fixed/src/test/java/org/apache/commons/csv*
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package org.apache.commons.$(basename "$CUR");
             {_code3}
 
             cd /home/lanweifrj/Test_Total/Csv_fixed/Csv_{i}_fixed

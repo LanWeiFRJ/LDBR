@@ -54,13 +54,12 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/JacksonXml_buggy/JacksonXml_{i}_buggy/src/test/java/com/fasterxml/jackson/dataformat/xml
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package com.fasterxml.jackson.dataformat.$(basename "$CUR");
             {_code3}
 
             cd /home/lanweifrj/Test_Total/JacksonXml_buggy/JacksonXml_{i}_buggy
@@ -91,13 +90,12 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/JacksonXml_fixed/JacksonXml_{i}_fixed/src/test/java/com/fasterxml/jackson/dataformat/xml
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package com.fasterxml.jackson.dataformat.$(basename "$CUR");
             {_code3}
 
             cd /home/lanweifrj/Test_Total/JacksonXml_fixed/JacksonXml_{i}_fixed
