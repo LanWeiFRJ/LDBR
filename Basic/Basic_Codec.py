@@ -25,14 +25,13 @@ if __name__ == "__main__":
                 defects4j checkout -p Codec -v {i}b -w /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
                 
                 cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy/src/test/org/apache/commons/codec*
-    
-                mkdir bugs
-    
-                cd bugs
+                
+                CUR="$PWD"
     
                 touch {class_name}.java
     
-                cat << 'EOF_JAVA_CODE' > {class_name}.java
+                cat << EOF_JAVA_CODE > {class_name}.java
+                package org.apache.commons.$(basename "$CUR");
                 {code}
     
                 cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
@@ -47,13 +46,12 @@ if __name__ == "__main__":
                 
                 cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy/src/test/java/org/apache/commons/codec*
 
-                mkdir bugs
-
-                cd bugs
-
+                CUR="$PWD"
+    
                 touch {class_name}.java
-
-                cat << 'EOF_JAVA_CODE' > {class_name}.java
+    
+                cat << EOF_JAVA_CODE > {class_name}.java
+                package org.apache.commons.$(basename "$CUR");
                 {code}
 
                 cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
@@ -84,13 +82,12 @@ if __name__ == "__main__":
 
                 cd /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed/src/test/org/apache/commons/codec*
 
-                mkdir bugs
-
-                cd bugs
-
+                CUR="$PWD"
+    
                 touch {class_name}.java
-
-                cat << 'EOF_JAVA_CODE' > {class_name}.java
+    
+                cat << EOF_JAVA_CODE > {class_name}.java
+                package org.apache.commons.$(basename "$CUR");
                 {code}
 
                 cd /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed
@@ -105,13 +102,12 @@ if __name__ == "__main__":
 
                 cd /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed/src/test/java/org/apache/commons/codec*
 
-                mkdir bugs
-
-                cd bugs
-
+                CUR="$PWD"
+    
                 touch {class_name}.java
-
-                cat << 'EOF_JAVA_CODE' > {class_name}.java
+    
+                cat << EOF_JAVA_CODE > {class_name}.java
+                package org.apache.commons.$(basename "$CUR");
                 {code}
 
                 cd /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed

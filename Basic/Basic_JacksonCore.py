@@ -23,15 +23,14 @@ if __name__ == "__main__":
             configure_script = f"""
             defects4j checkout -p JacksonCore -v {i}b -w /home/lanweifrj/Test_Total/JacksonCore_buggy/JacksonCore_{i}_buggy
 
-            cd /home/lanweifrj/Test_Total/JacksonCore_buggy/JacksonCore_{i}_buggy/src/test/java/com/fasterxml/jackson/core
+            cd /home/lanweifrj/Test_Total/JacksonCore_buggy/JacksonCore_{i}_buggy/src/test/java/com/fasterxml/jackson/core/main
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package com.fasterxml.jackson.core.$(basename "$CUR");
             {code}
 
             cd /home/lanweifrj/Test_Total/JacksonCore_buggy/JacksonCore_{i}_buggy
@@ -59,15 +58,14 @@ if __name__ == "__main__":
             configure_script = f"""
             defects4j checkout -p JacksonCore -v {i}f -w /home/lanweifrj/Test_Total/JacksonCore_fixed/JacksonCore_{i}_fixed
 
-            cd /home/lanweifrj/Test_Total/JacksonCore_fixed/JacksonCore_{i}_fixed/src/test/java/com/fasterxml/jackson/core
+            cd /home/lanweifrj/Test_Total/JacksonCore_buggy/JacksonCore_{i}_buggy/src/test/java/com/fasterxml/jackson/core/main
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package com.fasterxml.jackson.core.$(basename "$CUR");
             {code}
 
             cd /home/lanweifrj/Test_Total/JacksonCore_fixed/JacksonCore_{i}_fixed

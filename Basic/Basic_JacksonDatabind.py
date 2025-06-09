@@ -25,13 +25,12 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/JacksonDatabind_buggy/JacksonDatabind_{i}_buggy/src/test/java/com/fasterxml/jackson/databind
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package com.fasterxml.jackson.$(basename "$CUR");
             {code}
 
             cd /home/lanweifrj/Test_Total/JacksonDatabind_buggy/JacksonDatabind_{i}_buggy
@@ -61,13 +60,12 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/JacksonDatabind_fixed/JacksonDatabind_{i}_fixed/src/test/java/com/fasterxml/jackson/databind
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package com.fasterxml.jackson.$(basename "$CUR");
             {code}
 
             cd /home/lanweifrj/Test_Total/JacksonDatabind_fixed/JacksonDatabind_{i}_fixed

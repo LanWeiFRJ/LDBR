@@ -25,13 +25,12 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Time_buggy/Time_{i}_buggy/src/test/java/org/joda/time
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package org.joda.$(basename "$CUR");
             {code}
 
             cd /home/lanweifrj/Test_Total/Time_buggy/Time_{i}_buggy
@@ -62,13 +61,12 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Time_fixed/Time_{i}_fixed/src/test/java/org/joda/time
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package org.joda.$(basename "$CUR");
             {code}
 
             cd /home/lanweifrj/Test_Total/Time_fixed/Time_{i}_fixed

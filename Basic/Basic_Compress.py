@@ -24,14 +24,13 @@ if __name__ == "__main__":
             defects4j checkout -p Compress -v {i}b -w /home/lanweifrj/Test_Total/Compress_buggy/Compress_{i}_buggy
 
             cd /home/lanweifrj/Test_Total/Compress_buggy/Compress_{i}_buggy/src/test/java/org/apache/commons/compress*
-
-            mkdir bugs
-
-            cd bugs
+            
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package org.apache.commons.$(basename "$CUR");
             {code}
 
             cd /home/lanweifrj/Test_Total/Compress_buggy/Compress_{i}_buggy
@@ -57,17 +56,16 @@ if __name__ == "__main__":
 
             # Fixed Version
             configure_script = f"""
-            defects4j checkout -p Compress -v {i}f -w /home/lanweifrj/Test_Total/Compress_fixed/Compress_{i}_buggy
+            defects4j checkout -p Compress -v {i}f -w /home/lanweifrj/Test_Total/Compress_fixed/Compress_{i}_fixed
 
             cd /home/lanweifrj/Test_Total/Compress_fixed/Compress_{i}_fixed/src/test/java/org/apache/commons/compress*
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package org.apache.commons.$(basename "$CUR");
             {code}
 
             cd /home/lanweifrj/Test_Total/Compress_fixed/Compress_{i}_fixed

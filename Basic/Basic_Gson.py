@@ -25,13 +25,12 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Gson_buggy/Gson_{i}_buggy/gson/src/test/java/com/google/gson*
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package com.google.$(basename "$CUR");
             {code}
 
             cd /home/lanweifrj/Test_Total/Gson_buggy/Gson_{i}_buggy
@@ -61,13 +60,12 @@ if __name__ == "__main__":
 
             cd /home/lanweifrj/Test_Total/Gson_fixed/Gson_{i}_fixed/gson/src/test/java/com/google/gson*
 
-            mkdir bugs
-
-            cd bugs
+            CUR="$PWD"
 
             touch {class_name}.java
 
-            cat << 'EOF_JAVA_CODE' > {class_name}.java
+            cat << EOF_JAVA_CODE > {class_name}.java
+            package com.google.$(basename "$CUR");
             {code}
 
             cd /home/lanweifrj/Test_Total/Gson_fixed/Gson_{i}_fixed
