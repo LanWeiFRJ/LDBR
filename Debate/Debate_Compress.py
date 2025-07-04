@@ -25,6 +25,8 @@ if __name__ == "__main__":
             class_name = du.re.search(r"(?<=\bpublic\sclass\s)[A-Z][a-zA-Z0-9_]*", _code3, du.re.DOTALL).group(0)
 
             configure_script = f"""
+            rm -rf /home/lanweifrj/Test_Total/Compress_buggy/Compress_{i}_buggy
+            
             defects4j checkout -p Compress -v {i}b -w /home/lanweifrj/Test_Total/Compress_buggy/Compress_{i}_buggy
             
             /home/lanweifrj/Test_Total/Compress_buggy/Compress_{i}_buggy
@@ -86,6 +88,8 @@ if __name__ == "__main__":
             # Fixed Version
 
             configure_script = f"""
+            rm -rf /home/lanweifrj/Test_Total/Compress_fixed/Compress_{i}_fixed
+            
             defects4j checkout -p Compress -v {i}f -w /home/lanweifrj/Test_Total/Compress_fixed/Compress_{i}_fixed
 
             cd /home/lanweifrj/Test_Total/Compress_fixed/Compress_{i}_fixed/src/test/java/org/apache/commons/compress*

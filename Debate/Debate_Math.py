@@ -26,94 +26,98 @@ if __name__ == "__main__":
 
             if i < 85:
                 configure_script = f"""
-                    defects4j checkout -p Math -v {i}b -w /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
-                    
-                    cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
-            
-                    mkdir responses
+                rm -rf /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
                 
-                    cd responses
-                    
-                    cat << 'EOF_RESPONSE' > response
-                    response1_model1: 
-                    {response1}
-                    --------------------
-                    response1_model2:
-                    {_response1}
-                    --------------------
-                    response2_model1:
-                    {response2}
-                    --------------------
-                    response2_model2:
-                    {_response2}
-                    --------------------
-                    response3_model1:
-                    {response3}
-                    --------------------
-                    response3_model2:
-                    {_response3}
+                defects4j checkout -p Math -v {i}b -w /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
+                
+                cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
+        
+                mkdir responses
+            
+                cd responses
+                
+                cat << 'EOF_RESPONSE' > response
+                response1_model1: 
+                {response1}
+                --------------------
+                response1_model2:
+                {_response1}
+                --------------------
+                response2_model1:
+                {response2}
+                --------------------
+                response2_model2:
+                {_response2}
+                --------------------
+                response3_model1:
+                {response3}
+                --------------------
+                response3_model2:
+                {_response3}
 
-                    cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/java/org/apache/commons/math*
+                cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/java/org/apache/commons/math*
 
-                    CUR="$PWD"
+                CUR="$PWD"
 
-                    touch {class_name}.java
+                touch {class_name}.java
 
-                    cat << EOF_JAVA_CODE > {class_name}.java
-                    package org.apache.commons.$(basename "$CUR");
-                    {_code3}
+                cat << EOF_JAVA_CODE > {class_name}.java
+                package org.apache.commons.$(basename "$CUR");
+                {_code3}
 
-                    cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
+                cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
 
-                    defects4j compile > /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
 
-                    defects4j test >> /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
-                    """
+                defects4j test >> /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
+                """
             else:
                 configure_script = f"""
-                    defects4j checkout -p Math -v {i}b -w /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
-                    
-                    cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
-            
-                    mkdir responses
+                rm -rf /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
                 
-                    cd responses
-                    
-                    cat << 'EOF_RESPONSE' > response
-                    response1_model1: 
-                    {response1}
-                    --------------------
-                    response1_model2:
-                    {_response1}
-                    --------------------
-                    response2_model1:
-                    {response2}
-                    --------------------
-                    response2_model2:
-                    {_response2}
-                    --------------------
-                    response3_model1:
-                    {response3}
-                    --------------------
-                    response3_model2:
-                    {_response3}
+                defects4j checkout -p Math -v {i}b -w /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
+                
+                cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
+        
+                mkdir responses
+            
+                cd responses
+                
+                cat << 'EOF_RESPONSE' > response
+                response1_model1: 
+                {response1}
+                --------------------
+                response1_model2:
+                {_response1}
+                --------------------
+                response2_model1:
+                {response2}
+                --------------------
+                response2_model2:
+                {_response2}
+                --------------------
+                response3_model1:
+                {response3}
+                --------------------
+                response3_model2:
+                {_response3}
 
-                    cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/org/apache/commons/math
+                cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/org/apache/commons/math
 
-                    CUR="$PWD"
+                CUR="$PWD"
 
-                    touch {class_name}.java
+                touch {class_name}.java
 
-                    cat << EOF_JAVA_CODE > {class_name}.java
-                    package org.apache.commons.$(basename "$CUR");
-                    {_code3}
+                cat << EOF_JAVA_CODE > {class_name}.java
+                package org.apache.commons.$(basename "$CUR");
+                {_code3}
 
-                    cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
+                cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
 
-                    defects4j compile > /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
 
-                    defects4j test >> /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
-                    """
+                defects4j test >> /home/lanweifrj/Test_Total/Math_buggy/results/debate/result_{i}.txt
+                """
 
             script_path = f"/home/lanweifrj/Test_Total/Math_buggy/scripts/configure_script_{i}.sh"
             with open(script_path, "w") as f:
@@ -133,44 +137,48 @@ if __name__ == "__main__":
 
             if i < 85:
                 configure_script = f"""
-                    defects4j checkout -p Math -v {i}f -w /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
+                rm -rf /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
+                
+                defects4j checkout -p Math -v {i}f -w /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
 
-                    cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/java/org/apache/commons/math*
+                cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/java/org/apache/commons/math*
 
-                    CUR="$PWD"
+                CUR="$PWD"
 
-                    touch {class_name}.java
+                touch {class_name}.java
 
-                    cat << EOF_JAVA_CODE > {class_name}.java
-                    package org.apache.commons.$(basename "$CUR");
-                    {_code3}
+                cat << EOF_JAVA_CODE > {class_name}.java
+                package org.apache.commons.$(basename "$CUR");
+                {_code3}
 
-                    cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
+                cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
 
-                    defects4j compile > /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
 
-                    defects4j test >> /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
-                    """
+                defects4j test >> /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
+                """
             else:
                 configure_script = f"""
-                    defects4j checkout -p Math -v {i}f -w /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
+                rm -rf /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
+                
+                defects4j checkout -p Math -v {i}f -w /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
 
-                    cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/org/apache/commons/math
+                cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/org/apache/commons/math
 
-                    CUR="$PWD"
+                CUR="$PWD"
 
-                    touch {class_name}.java
+                touch {class_name}.java
 
-                    cat << EOF_JAVA_CODE > {class_name}.java
-                    package org.apache.commons.$(basename "$CUR");
-                    {_code3}
+                cat << EOF_JAVA_CODE > {class_name}.java
+                package org.apache.commons.$(basename "$CUR");
+                {_code3}
 
-                    cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
+                cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
 
-                    defects4j compile > /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
+                defects4j compile > /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
 
-                    defects4j test >> /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
-                    """
+                defects4j test >> /home/lanweifrj/Test_Total/Math_fixed/results/debate/result_{i}.txt
+                """
 
             script_path = f"/home/lanweifrj/Test_Total/Math_fixed/scripts/configure_script_{i}.sh"
             with open(script_path, "w") as f:
