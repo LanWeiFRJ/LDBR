@@ -22,6 +22,8 @@ if __name__ == "__main__":
 
             if i < 11 :
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
+                
                 defects4j checkout -p Codec -v {i}b -w /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
                 
                 cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy/src/test/org/apache/commons/codec*
@@ -42,6 +44,8 @@ if __name__ == "__main__":
                 """
             else :
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
+                
                 defects4j checkout -p Codec -v {i}b -w /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy
                 
                 cd /home/lanweifrj/Test_Total/Codec_buggy/Codec_{i}_buggy/src/test/java/org/apache/commons/codec*
@@ -78,6 +82,8 @@ if __name__ == "__main__":
             # Fixed Version
             if i < 11:
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed
+                
                 defects4j checkout -p Codec -v {i}f -w /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed
 
                 cd /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed/src/test/org/apache/commons/codec*
@@ -98,6 +104,8 @@ if __name__ == "__main__":
                 """
             else:
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed
+                
                 defects4j checkout -p Codec -v {i}f -w /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed
 
                 cd /home/lanweifrj/Test_Total/Codec_fixed/Codec_{i}_fixed/src/test/java/org/apache/commons/codec*

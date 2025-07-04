@@ -24,6 +24,8 @@ if __name__ == "__main__":
 
             if i < 30 :
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy
+                
                 defects4j checkout -p Cli -v {i}b -w /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy
     
                 cd /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy/src/test/org/apache/commons/cli*
@@ -44,6 +46,8 @@ if __name__ == "__main__":
                 """
             else :
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy
+                
                 defects4j checkout -p Cli -v {i}b -w /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy
 
                 cd /home/lanweifrj/Test_Total/Cli_buggy/Cli_{i}_buggy/src/test/java/org/apache/commons/cli*
@@ -80,6 +84,8 @@ if __name__ == "__main__":
             # Fixed Version
             if i < 30:
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Cli_fixed/Cli_{i}_fixed
+                
                 defects4j checkout -p Cli -v {i}f -w /home/lanweifrj/Test_Total/Cli_fixed/Cli_{i}_fixed
 
                 cd /home/lanweifrj/Test_Total/Cli_fixed/Cli_{i}_fixed/src/test/org/apache/commons/cli*
@@ -100,6 +106,8 @@ if __name__ == "__main__":
                 """
             else:
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Cli_fixed/Cli_{i}_fixed
+                
                 defects4j checkout -p Cli -v {i}f -w /home/lanweifrj/Test_Total/Cli_fixed/Cli_{i}_fixed
 
                 cd /home/lanweifrj/Test_Total/Cli_fixed/Cli_{i}_fixed/src/test/java/org/apache/commons/cli*

@@ -22,6 +22,8 @@ if __name__ == "__main__":
 
             if i < 85:
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
+                
                 defects4j checkout -p Math -v {i}b -w /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
 
                 cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/java/org/apache/commons/math*
@@ -42,6 +44,8 @@ if __name__ == "__main__":
                 """
             else :
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
+                
                 defects4j checkout -p Math -v {i}b -w /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy
 
                 cd /home/lanweifrj/Test_Total/Math_buggy/Math_{i}_buggy/src/test/org/apache/commons/math
@@ -79,6 +83,8 @@ if __name__ == "__main__":
 
             if i < 85:
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
+                
                 defects4j checkout -p Math -v {i}f -w /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
 
                 cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/java/org/apache/commons/math*
@@ -99,6 +105,8 @@ if __name__ == "__main__":
                 """
             else:
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
+                
                 defects4j checkout -p Math -v {i}f -w /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed
 
                 cd /home/lanweifrj/Test_Total/Math_fixed/Math_{i}_fixed/src/test/org/apache/commons/math

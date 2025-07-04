@@ -24,6 +24,8 @@ if __name__ == "__main__":
 
             if i < 17 :
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy
+                
                 defects4j checkout -p Collections -v {i}b -w /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy
                 
                 cd /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy/src/test/org/apache/commons/collections*
@@ -44,6 +46,8 @@ if __name__ == "__main__":
                 """
             else :
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy
+                
                 defects4j checkout -p Collections -v {i}b -w /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy
                 
                 cd /home/lanweifrj/Test_Total/Collections_buggy/Collections_{i}_buggy/src/test/java/org/apache/commons/collections*
@@ -80,6 +84,8 @@ if __name__ == "__main__":
             # Fixed Version
             if i < 17:
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed
+                
                 defects4j checkout -p Collections -v {i}f -w /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed
 
                 cd /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed/src/test/org/apache/commons/collections*
@@ -100,6 +106,8 @@ if __name__ == "__main__":
                 """
             else:
                 configure_script = f"""
+                rm -rf /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed
+                
                 defects4j checkout -p Collections -v {i}f -w /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed
 
                 cd /home/lanweifrj/Test_Total/Collections_fixed/Collections_{i}_fixed/src/test/java/org/apache/commons/collections*
