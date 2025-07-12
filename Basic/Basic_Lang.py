@@ -8,7 +8,7 @@ if __name__ == "__main__":
     index_list = data['bug.id'].values.tolist()
     model = "sonnet"
 
-    # m = "sonnet", "o3", "r1"
+    # m = "sonnet", "o3", "r1", "nano"
     if "-m" in sys.argv:
         p_index = sys.argv.index("-m") + 1
         model = sys.argv[p_index]

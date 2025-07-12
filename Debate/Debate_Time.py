@@ -9,7 +9,7 @@ if __name__ == "__main__":
     model1 = "sonnet"
     model2 = "o3"
 
-    # m1, m2 = "sonnet", "o3", "r1", "turbo"
+    # m1, m2 = "sonnet", "o3", "r1", "nano"
     if "-m1" in sys.argv:
         p_index1 = sys.argv.index("-m1") + 1
         model1 = sys.argv[p_index1]
