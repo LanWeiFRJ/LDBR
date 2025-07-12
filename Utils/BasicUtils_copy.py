@@ -16,10 +16,10 @@ from anthropic import DefaultHttpxClient
 MODEL_SONNET = "claude-3-5-sonnet-latest"
 MODEL_O3 = "o3-mini-2025-01-31"
 MODEL_R1 = "deepseek-reasoner"
-MODEL_TURBO = "gpt-3.5-turbo"
+MODEL_NANO = "gpt-4.1-nano"
 
-DEEPSEEK_TOKEN = "your_key"
-ANTHROPIC_TOKEN = "your_key"
+DEEPSEEK_TOKEN = "YOUR_API_KEY"
+ANTHROPIC_TOKEN = "YOUR_API_KEY"
 
 TEMPERATURE = 0.7
 FREQUENCY_PENALTY = 0.0
@@ -74,12 +74,12 @@ def infer_with_llm(prompt, model, max_retries=5, initial_delay=1.0, backoff_fact
 
         raise Exception("Unexpected Fault. Over max retries.")
 
-    elif model == "o3" or model == "turbo":
+    elif model == "o3" or model == "nano":
         client = OpenAI()
         if model == "o3":
             model_gpt = MODEL_O3
         else:
-            model_gpt = MODEL_TURBO
+            model_gpt = MODEL_NANO
 
         while retry_count <= max_retries:
             try:

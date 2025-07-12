@@ -14,10 +14,10 @@ import traceback
 MODEL_SONNET = "claude-3-5-sonnet-latest"
 MODEL_O3 = "o3-mini-2025-01-31"
 MODEL_R1 = "deepseek-reasoner"
-MODEL_TURBO = "gpt-3.5-turbo"
+MODEL_NANO = "gpt-4.1-nano"
 
-DEEPSEEK_TOKEN = "Your_Deepseek_Token"
-ANTHROPIC_TOKEN = "Your_Anthropic_Token"
+DEEPSEEK_TOKEN = "YOUR_API_KEY"
+ANTHROPIC_TOKEN = "YOUR_API_KEY"
 
 TEMPERATURE = 0.7
 FREQUENCY_PENALTY = 0.0
@@ -103,7 +103,7 @@ def infer_with_llm(prompt, model, max_retries=5, initial_delay=1.0, backoff_fact
         if model == "o3":
             model_gpt = MODEL_O3
         else:
-            model_gpt = MODEL_TURBO
+            model_gpt = MODEL_NANO
         
         while retry_count <= max_retries:
             try:
