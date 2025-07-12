@@ -1,4 +1,6 @@
 import traceback
+from email.policy import default
+
 from openai import OpenAI
 import requests
 from bs4 import BeautifulSoup
@@ -16,14 +18,14 @@ MODEL_O3 = "o3-mini-2025-01-31"
 MODEL_R1 = "deepseek-reasoner"
 MODEL_TURBO = "gpt-3.5-turbo"
 
-DEEPSEEK_TOKEN = "Your_Deepseek_Token"
-ANTHROPIC_TOKEN = "Your_Anthropic_Token"
+DEEPSEEK_TOKEN = "your_key"
+ANTHROPIC_TOKEN = "your_key"
 
 TEMPERATURE = 0.7
 FREQUENCY_PENALTY = 0.0
 PRESENCE_PENALTY = 0.0
 INITIAL_SYSTEM_PROMPT = "You are a senior bug report expert."
-INITIAL_USER_PROMPT = "Please generate the executable test case using Java to trigger the bug in the report."
+INITIAL_USER_PROMPT = "Please generate the executable test case using Java to trigger the bug (only trigger but not solve the bug) in the report."
 
 def infer_with_llm(prompt, model, max_retries=5, initial_delay=1.0, backoff_factor=2.0):
 
@@ -155,9 +157,30 @@ def fetch_bug_report(url, max_retries=5, initial_delay=1, backoff_factor=2):
         f"Fail, Max Retries."
     )
 
-def generate_prompt(html_content):
+def generate_prompt(html_content, repo):
+
+    class_1 = "aui-item issue-main-column"
+    class_2 = "Box-sc-g0xbh4-0 dxnHPp"
+
+    repo_to_html_class = {
+        "Cli": class_1,
+        "Codec": class_1,
+        "Collections": class_1,
+        "Compress": class_1,
+        "Csv": class_1,
+        "JxPath": class_1,
+        "Lang": class_1,
+        "Math": class_1,
+        "Gson": class_2,
+        "JacksonXml": class_2,
+        "JacksonCore": class_2,
+        "JacksonDatabind": class_2,
+        "Jsoup": class_2,
+        "Time": class_2
+    }
+
     soup = BeautifulSoup(html_content, 'html.parser')
-    bug_report_text = soup.get_text()
+    bug_report_text = soup.find('div', class_=repo_to_html_class[repo]).get_text(strip=True, separator=' ')
     prompt = f"""
     Bug Report:
 
@@ -165,9 +188,10 @@ def generate_prompt(html_content):
         
     Please generate a JUnit style Java test case based on the provided bug report, it should satisfy the requests below:
 
-        - Thinking step by step.
-        - Generate your bug-reproducing code, and it should be in **JUnit style**.
+        - Think step by step.
+        - Generate your bug-reproducing code, and it should be in **JUnit 3 style**.
         - When generating the code, pay attention to the source compatibility version, which is set to 6 in the testing environment.
+        - Before you give me the code, recall related knowledge, such as environment consistency, to help your generation.
         - Wrap the reproduced code you generate with markdown-style triple backticks (```), which is **extremely important**.
 
     Here I will give you an example of bug reproduction:
@@ -195,7 +219,6 @@ def generate_prompt(html_content):
         Knowledge in bug reproduction:
 
         - Environment consistency: Choose correct repository version according to the time of the report.
-        - Data and Input reproduction: Use the same data/input as the report did.
 
         Reproduction Code:
 
@@ -230,12 +253,12 @@ def execute_script(file_path):
     result = subprocess.run(["sh", file_path], capture_output=True, text=True)
     return result.stdout, result.stderr
 
-def iterator(url_list, i, model):
+def iterator(url_list, i, model, repo):
     cur_url = url_list[i - 1]
     print(cur_url)
     html_content = fetch_bug_report(cur_url)
     print("fetch done")
-    prompt = generate_prompt(html_content)
+    prompt = generate_prompt(html_content, repo)
     print("prompt generation done")
     response = infer_with_llm(prompt, model)
     print("response generation done")

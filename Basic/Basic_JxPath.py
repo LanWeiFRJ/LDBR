@@ -16,7 +16,7 @@ if __name__ == "__main__":
     # i为bug序号，作为索引来检索bug的url
     for i in index_list:
         try:
-            code = bu.iterator(url_list, i, model)
+            code = bu.iterator(url_list, i, model, "JxPath")
             # 用正则表达式匹配“public class ***”
             class_name = bu.re.search(r"(?<=\bpublic\sclass\s)[A-Z][a-zA-Z0-9_]*", code, bu.re.DOTALL).group(0)
 

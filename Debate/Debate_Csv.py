@@ -20,7 +20,7 @@ if __name__ == "__main__":
     # i为bug序号，作为索引来检索bug的url
     for i in index_list:
         try:
-            _code3, response1, response2, response3, _response1, _response2, _response3 = du.iterator(url_list, i, model1, model2)
+            _code3, response1, response2, response3, _response1, _response2, _response3 = du.iterator(url_list, i, model1, model2, "Csv")
             # 用正则表达式匹配“public class ***”
             class_name = du.re.search(r"(?<=\bpublic\sclass\s)[A-Z][a-zA-Z0-9_]*", _code3, du.re.DOTALL).group(0)
 
