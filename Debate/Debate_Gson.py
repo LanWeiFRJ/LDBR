@@ -10,11 +10,11 @@ if __name__ == "__main__":
     model2 = "o3"
 
     # m1, m2 = "sonnet", "o3", "r1", "nano"
-    if "-m1" in sys.argv:
-        p_index1 = sys.argv.index("-m1") + 1
+    if "-m" in sys.argv:
+        p_index1 = sys.argv.index("-m") + 1
         model1 = sys.argv[p_index1]
-    if "-m2" in sys.argv:
-        p_index2 = sys.argv.index("-m2") + 1
+    if "-n" in sys.argv:
+        p_index2 = sys.argv.index("-n") + 1
         model2 = sys.argv[p_index2]
 
     # i为bug序号，作为索引来检索bug的url
