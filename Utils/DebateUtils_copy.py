@@ -129,33 +129,6 @@ def infer_with_llm(prompt, model, max_retries=5, initial_delay=1.0, backoff_fact
 
         raise Exception("Unexpected Fault. Over max retries.")
 
-    elif model == "o3" :
-        client = OpenAI()
-        model = MODEL_O3
-
-        while retry_count <= max_retries:
-            try:
-                response = client.chat.completions.create(
-                    model=model,
-                    messages=[
-                        {"role": "system", "content": INITIAL_SYSTEM_PROMPT},
-                        {"role": "user", "content": INITIAL_USER_PROMPT},
-                        {"role": "user", "content": prompt}
-                    ]
-                )
-
-                return response.choices[0].message.content.strip()
-
-            except:
-                if retry_count < max_retries:
-                    print("Fail " + str(retry_count) + " times")
-                    time.sleep(current_delay)
-                    current_delay *= backoff_factor
-                    retry_count += 1
-                else:
-                    raise Exception(f"Max Retries")
-
-        raise Exception("Unexpected Fault. Over max retries.")
 
 
 def fetch_bug_report(url, max_retries=5, initial_delay=1, backoff_factor=2):
@@ -371,36 +344,36 @@ def iterator(url_list, i, model1, model2, repo):
     pattern = r'```\s*(?:java\s*)?\n(.*?)\s*```'
 
     # Debate Round 1
-    prompt1 = generate_prompt(html_content, 2, code)
+    prompt1 = generate_prompt(html_content, "Cli", 2, code)
     response1 = infer_with_llm(prompt1, model=model_counter)
     pre_code1 = re.search(pattern, response1, flags=re.DOTALL).group(0)
     code1 = remove_backticks(pre_code1)
 
-    _prompt1 = generate_prompt(html_content, 2, code1)
+    _prompt1 = generate_prompt(html_content, "Cli", 2, code1)
     _response1 = infer_with_llm(_prompt1, model=model_start)
     _pre_code1 = re.search(pattern, _response1, flags=re.DOTALL).group(0)
     _code1 = remove_backticks(_pre_code1)
     print("Round 1 done.")
 
     # Debate Round 2
-    prompt2 = generate_prompt(html_content, 2, _code1)
+    prompt2 = generate_prompt(html_content, "Cli", 2, _code1)
     response2 = infer_with_llm(prompt2, model=model_counter)
     pre_code2 = re.search(pattern, response2, flags=re.DOTALL).group(0)
     code2 = remove_backticks(pre_code2)
 
-    _prompt2 = generate_prompt(html_content, 2, code2)
+    _prompt2 = generate_prompt(html_content, "Cli", 2, code2)
     _response2 = infer_with_llm(_prompt2, model=model_start)
     _pre_code2 = re.search(pattern, _response2, flags=re.DOTALL).group(0)
     _code2 = remove_backticks(_pre_code2)
     print("Round 2 done.")
 
     # Debate Round 3
-    prompt3 = generate_prompt(html_content, 2, _code2)
+    prompt3 = generate_prompt(html_content, "Cli", 2, _code2)
     response3 = infer_with_llm(prompt3, model=model_counter)
     pre_code3 = re.search(pattern, response3, flags=re.DOTALL).group(0)
     code3 = remove_backticks(pre_code3)
 
-    _prompt3 = generate_prompt(html_content, 2, code3)
+    _prompt3 = generate_prompt(html_content, "Cli", 2, code3)
     _response3 = infer_with_llm(_prompt3, model=model_start)
     _pre_code3 = re.search(pattern, _response3, flags=re.DOTALL).group(0)
     _code3 = remove_backticks(_pre_code3)
