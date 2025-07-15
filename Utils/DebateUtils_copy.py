@@ -98,7 +98,7 @@ def infer_with_llm(prompt, model, max_retries=5, initial_delay=1.0, backoff_fact
 
         raise Exception("Unexpected Fault. Over max retries.")
 
-    elif model == "turbo" or model =="o3":
+    elif model == "nano" or model =="o3":
         client = OpenAI()
         if model == "o3":
             model_gpt = MODEL_O3
